@@ -19,14 +19,23 @@ function calculate() {
     
     rateEl.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;
     amountEl_two.value = (amountEl_one.value * rate).toFixed(2);
-  })
+  });
 }
+
+
 
 // Event listeners
 currencyEl_one.addEventListener('change', calculate);
 amountEl_one.addEventListener('input', calculate);
 currencyEl_two.addEventListener('change', calculate);
 amountEl_one.addEventListener('input', calculate);
+
+swap.addEventListener('click', () => {
+  const temp = currencyEl_one.value;
+  currencyEl_one.value = currencyEl_two.value;
+  currencyEl_two.value = temp;
+  calculate();
+})
 
 
 calculate();
